@@ -6,6 +6,7 @@ import "./stylesheets/styles.css";
 
 //components
 import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
 
 //StoreShell
 import StoreShell from "./components/StoreShell";
@@ -24,6 +25,7 @@ const router = (
       <Router history={history}>
         <Route path="/" component={StoreShell}>
           <IndexRoute component={Home}></IndexRoute>
+          <Route path="/dashboard" component={Dashboard}></Route>
         </Route>
       </Router>
   </Provider>

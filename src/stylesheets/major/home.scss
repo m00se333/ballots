@@ -2,9 +2,22 @@
     background: blue;
     display: flex;
     align-items: center;
+    width: 75%;
+    height: 80vh;
+    margin: 5% auto;
+    justify-content: center;
     
     #loginForm{
       display: flex;
       flex-direction: column;
+      width: 30%;
+        
+        // selecting via type
+        input[type="text"]{
+          font-size: 20px;
+          //change border properties
+          border: 0px;
+          margin: 1% 0;
+        }
     }
 }

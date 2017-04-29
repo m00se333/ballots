@@ -5,7 +5,7 @@ html {
 
 body {
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     margin: 0;
 }
 
@@ -21,3 +21,4 @@ body {
 }
 
 @import "./major/home.scss";
+@import "./major/dashboard.scss";
