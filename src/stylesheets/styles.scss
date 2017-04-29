@@ -1,0 +1,23 @@
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+    margin: 0;
+}
+
+#app{
+  height: 100%;
+  width: 100%;
+}
+
+.theBigWrapper{
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+@import "./major/home.scss";

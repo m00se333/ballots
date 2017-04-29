@@ -1,0 +1,9 @@
+#loginBox {
+  background: blue;
+  display: flex;
+  align-items: center; }
+  #loginBox #loginForm {
+    display: flex;
+    flex-direction: column; }
+
+/*# sourceMappingURL=home.css.map */
