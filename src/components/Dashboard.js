@@ -8,8 +8,9 @@ import { browserHistory } from 'react-router'
 class Dashboard extends React.Component{
 
     dashOption(route){
-      //changes the route!
+      
       browserHistory.push(route);
+      console.log("changing route");
 
     }
 
@@ -20,7 +21,7 @@ class Dashboard extends React.Component{
               <span>Profile</span>
             </div>
             <div className="dashButton" onClick={() => {this.dashOption("/ballots")}}>
-              <span>Ballot Entry</span>
+              <span>Ballots</span>
             </div>
           </div>
         )
