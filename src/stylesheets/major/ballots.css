@@ -1,0 +1,11 @@
+#ballotsWrapper {
+  display: flex;
+  background: blue;
+  align-items: center;
+  width: 75%;
+  height: 80vh;
+  margin: 5% auto; }
+  #ballotsWrapper #schoolSelector {
+    width: 30%; }
+
+/*# sourceMappingURL=ballots.css.map */

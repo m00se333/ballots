@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
   //nested in Dasboard
   import Profile from "./components/Profile";
   import Ballots from "./components/Ballots";
+  import BuildTournament from "./components/BuildTournament";
 
 //StoreShell
 import StoreShell from "./components/StoreShell";
@@ -31,6 +32,7 @@ const router = (
           <Route path="/dashboard" component={Dashboard}></Route>
           <Route path="/profile" component={Profile}></Route>
           <Route path="/ballots" component={Ballots}></Route>
+          <Route path="/tournament" component={BuildTournament}></Route>
         </Route>
       </Router>
   </Provider>
