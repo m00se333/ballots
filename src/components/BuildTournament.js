@@ -6,23 +6,46 @@ import {addOutround} from  "../actions/tournamentActions.js";
 
 class BuildTournament extends React.Component{
 
-    hello(){
+    addAnOutround(){
 
       const { outRounds } = this.props.tournament;
-
-      console.log({outRounds}); // one behind actual
-
       this.props.addOutround();
+      console.log({outRounds}); // one behind actual
+  
+    }
+
+    updateName(){
+      const { name } = this.props.tournament
+      console.log(this.refs.nameRef.value)
+    }
+
+    componentDidUpdate(){
+      console.log("props changed")
+
+      let i = this.props.tournament.outRounds;
+      const anchor = document.getElementById("rounds");
+
+
+      const outround = document.createElement("input")
+            outround.setAttribute("id", i)
+            outround.setAttribute("placeholder", `Box ${i}`)
+
+
+      anchor.appendChild(outround)
+    
+    }
+
+    addInput(){
       
+      
+
     }
 
     render(){
 
         const {name, notes, outRounds, prelims} = this.props.tournament;
 
-        const outround = <input type="text" placeholder="name"/>
-
-        const check = outRounds > 0 ? outround : null;
+        const style = outRounds > 0 ? {display: "block"} : {display: "none"};
 
         return(
           <div>
@@ -30,10 +53,12 @@ class BuildTournament extends React.Component{
             <h1>Build A Tournament Here</h1>
 
             <form action="" className="test">
-              <input type="text" placeholder="Tournament Name"/>
+              <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.updateName()}/>
               <input type="number" defaultValue={prelims} />
-              {check}
-              <input type="button" value="add outround" onClick={() => this.hello()}/>
+              <div id="rounds" style={style}>
+                
+              </div>
+              <input type="button" value="add outround" onClick={() => this.addAnOutround()}/>
             </form>
 
 

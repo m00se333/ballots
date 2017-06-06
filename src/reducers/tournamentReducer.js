@@ -5,9 +5,9 @@ export function tournament(state={}, action){
 
         case "INCREMENT":
 
-          let count = action.payload
+          let count = state.outRounds + action.payload
           
-          return {...state, outRounds: count++} 
+          return {...state, outRounds: count} 
 
         default:
           return state;
