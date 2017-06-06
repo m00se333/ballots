@@ -16,9 +16,10 @@ class Dashboard extends React.Component{
 
     render(){
 
-      const adminDash = "hello";
-                          //change to the class "button wrapper" or something so CSS works correctly
-      const studentDash = <div id="dashWrapper">
+      const adminDash = <div id="buttonWrapper">
+                            <div className="dashButton" onClick={() => {this.dashOption("/tournament")}}>
+                              <span>Make a tournament</span>
+                            </div>
                             <div className="dashButton" onClick={() => {this.dashOption("/profile")}}>
                               <span>Profile</span>
                             </div>
@@ -27,9 +28,20 @@ class Dashboard extends React.Component{
                             </div>
                           </div>
 
-      const user = true;
 
-      const userAccess = user ? studentDash : console.log("nope");
+                          //change to the class "button wrapper" or something so CSS works correctly
+      const studentDash = <div id="buttonWrapper">
+                            <div className="dashButton" onClick={() => {this.dashOption("/profile")}}>
+                              <span>Profile</span>
+                            </div>
+                            <div className="dashButton" onClick={() => {this.dashOption("/ballots")}}>
+                              <span>Ballots</span>
+                            </div>
+                          </div>
+
+      const user = false;
+
+      const userAccess = user ? studentDash : adminDash;
 
 
 

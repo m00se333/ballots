@@ -1,29 +1,33 @@
 #dashWrapper {
-  display: flex;
-  background: blue;
-  align-items: center;
-  width: 75%;
-  height: 80vh;
-  margin: 5% auto;
-  justify-content: center;
-  flex-direction: column; }
-  #dashWrapper .dashButton {
-    flex: 1;
+  height: inherit;
+  width: inherit;
+  display: inherit; }
+  #dashWrapper #buttonWrapper {
     display: flex;
-    font-size: 20px;
-    border-left: 2px solid white;
-    border-right: 2px solid white;
-    width: 50%;
-    color: white;
+    background: blue;
     align-items: center;
-    justify-content: center; }
-  #dashWrapper .dashButton:nth-of-type(1) {
-    margin: 1% 0 0 0;
-    border-bottom: 1px solid white;
-    border-top: 2px solid white; }
-  #dashWrapper .dashButton:nth-of-type(2) {
-    margin: 0 0 1% 0;
-    border-top: 1px solid white;
-    border-bottom: 2px solid white; }
+    width: 75%;
+    height: 80vh;
+    margin: 5% auto;
+    justify-content: center;
+    flex-direction: column; }
+    #dashWrapper #buttonWrapper .dashButton {
+      flex: 1;
+      display: flex;
+      font-size: 20px;
+      border-left: 2px solid white;
+      border-right: 2px solid white;
+      width: 50%;
+      color: white;
+      align-items: center;
+      justify-content: center; }
+    #dashWrapper #buttonWrapper .dashButton:nth-of-type(1) {
+      margin: 1% 0 0 0;
+      border-bottom: 1px solid white;
+      border-top: 2px solid white; }
+    #dashWrapper #buttonWrapper .dashButton:nth-of-type(2) {
+      margin: 0 0 1% 0;
+      border-top: 1px solid white;
+      border-bottom: 2px solid white; }
 
 /*# sourceMappingURL=dashboard.css.map */

@@ -11,7 +11,13 @@ import rootReducer from "./reducers/mainReducer";
 
 const state = {
 
-  data: false
+  data: false,
+  tournament: {
+    name: null,
+    prelims: 3,
+    outRounds: 0,
+    notes: null
+  }
 
 };
 
