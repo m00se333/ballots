@@ -3,24 +3,17 @@ export function tournament(state={}, action){
 
     switch(action.type){
 
-        case "INCREMENT":
+        case "UPDATE_OUTROUND":
 
-          let count = state.outRounds + action.payload
-          
-          return {...state, outRounds: count};
+          return {...state, outRounds: parseInt(action.payload)};
 
-        case "RECORD_NAME":
+        case "UPDATE_NAME":
 
-          console.log(action.payload);
           return {...state, name: action.payload}; 
-
-        case "ADD_PRELIM":
-
-        case "SUBTRACT_PRELIM":
 
         case "UPDATE_PRELIM":
 
-          return {...state, prelims: action.payload}
+          return {...state, prelims: parseInt(action.payload)};
 
         default:
           return state;

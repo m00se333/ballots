@@ -1,28 +1,14 @@
-export function addOutround(){
+export function updateOutrounds(number){
   return {
-          type: "INCREMENT",
-          payload: 1
+          type: "UPDATE_OUTROUND",
+          payload: number
          }
 }
 
 export function updateName(string){
   return {
-          type: "RECORD_NAME",
+          type: "UPDATE_NAME",
           payload: string
-         }
-}
-
-export function addPrelim(){
-  return {
-          type: "ADD_PRELIM",
-          payload: 1
-         }
-}
-
-export function subtractPrelim(){
-  return {
-          type: "SUBTRACT_PRELIM",
-          payload: -1
          }
 }
 

@@ -1,26 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {addOutround, updateName, updatePrelim} from  "../actions/tournamentActions.js";
+import {updateOutrounds, updateName, updatePrelim} from  "../actions/tournamentActions.js";
 
 class BuildTournament extends React.Component{
 
-    addAnOutround(){
+    updateOutround(){
 
       const { outRounds } = this.props.tournament;
-      this.props.addOutround();
-      
+      const { outRoundRef } = this.refs;
 
-      let i = this.props.tournament.outRounds;
-      const anchor = document.getElementById("rounds");
-
-
-      const outround = document.createElement("input")
-            outround.setAttribute("id", i)
-            outround.setAttribute("placeholder", `Box ${i + 1}`)
-
-      anchor.appendChild(outround);
-
+      this.props.updateOutrounds(outRoundRef.value);
 
     }
 
@@ -28,7 +18,6 @@ class BuildTournament extends React.Component{
 
       const { name } = this.props.tournament;
       const { nameRef  } = this.refs;
-      console.log(nameRef.value);
 
       this.props.updateName(nameRef.value);
 
@@ -40,16 +29,12 @@ class BuildTournament extends React.Component{
 
       this.props.updatePrelim(prelimRef.value);
 
-      console.log(prelims)
-
     }
 
 
     render(){
 
-        const {name, notes, outRounds, prelims} = this.props.tournament;
-
-        const style = outRounds > 0 ? {display: "block"} : {display: "none"};
+        const {prelims, outRounds} = this.props.tournament;
 
         return(
           <div>
@@ -59,18 +44,11 @@ class BuildTournament extends React.Component{
             <form action="" className="test">
               <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
               <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
-              <div id="rounds" style={style}>
-                
-              </div>
-              <input type="button" value="add outround" onClick={() => this.addAnOutround()}/>
+              <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.updateOutround()}/>
             </form>
-
-
 
           </div>
             
-
-
           )
     }
 }
@@ -84,7 +62,7 @@ const mapStateToProps = (state) =>{
 }
 
 const mapDispatchToProps = {
-  addOutround,
+  updateOutrounds,
   updateName,
   updatePrelim
 };
