@@ -1,8 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {addOutround} from  "../actions/tournamentActions.js";
-
+import {addOutround, updateName, updatePrelim} from  "../actions/tournamentActions.js";
 
 class BuildTournament extends React.Component{
 
@@ -10,17 +9,7 @@ class BuildTournament extends React.Component{
 
       const { outRounds } = this.props.tournament;
       this.props.addOutround();
-      console.log({outRounds}); // one behind actual
-  
-    }
-
-    updateName(){
-      const { name } = this.props.tournament
-      console.log(this.refs.nameRef.value)
-    }
-
-    componentDidUpdate(){
-      console.log("props changed")
+      
 
       let i = this.props.tournament.outRounds;
       const anchor = document.getElementById("rounds");
@@ -28,18 +17,33 @@ class BuildTournament extends React.Component{
 
       const outround = document.createElement("input")
             outround.setAttribute("id", i)
-            outround.setAttribute("placeholder", `Box ${i}`)
+            outround.setAttribute("placeholder", `Box ${i + 1}`)
+
+      anchor.appendChild(outround);
 
 
-      anchor.appendChild(outround)
-    
     }
 
-    addInput(){
-      
-      
+    recordName(){
+
+      const { name } = this.props.tournament;
+      const { nameRef  } = this.refs;
+      console.log(nameRef.value);
+
+      this.props.updateName(nameRef.value);
 
     }
+
+    updatePrelims(){
+      const { prelims } = this.props.tournament;
+      const { prelimRef } = this.refs;
+
+      this.props.updatePrelim(prelimRef.value);
+
+      console.log(prelims)
+
+    }
+
 
     render(){
 
@@ -53,8 +57,8 @@ class BuildTournament extends React.Component{
             <h1>Build A Tournament Here</h1>
 
             <form action="" className="test">
-              <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.updateName()}/>
-              <input type="number" defaultValue={prelims} />
+              <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
+              <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
               <div id="rounds" style={style}>
                 
               </div>
@@ -80,7 +84,9 @@ const mapStateToProps = (state) =>{
 }
 
 const mapDispatchToProps = {
-  addOutround
+  addOutround,
+  updateName,
+  updatePrelim
 };
 
 
