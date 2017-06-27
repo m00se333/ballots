@@ -15,6 +15,10 @@ export function tournament(state={}, action){
 
           return {...state, prelims: parseInt(action.payload)};
 
+        case "UPDATE_NOTES":
+
+          return {...state, notes: action.payload};
+
         default:
           return state;
     }

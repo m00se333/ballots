@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function updateOutrounds(number){
   return {
           type: "UPDATE_OUTROUND",
@@ -17,4 +19,25 @@ export function updatePrelim(number){
           type: "UPDATE_PRELIM",
           payload: number
          }
+}
+
+export function updateNotes(string){
+  return {
+          type: "UPDATE_NOTES",
+          payload: string
+         }
+}
+
+export function createNewTournament(object){
+
+    const route = axios.post("/createNewTournament", object)
+
+    return(dispatch) => {
+
+      route.then(({data}) => {
+
+        console.log(data);
+
+      })
+    }
 }

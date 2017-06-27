@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {updateOutrounds, updateName, updatePrelim} from  "../actions/tournamentActions.js";
+import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament} from  "../actions/tournamentActions.js";
 
 class BuildTournament extends React.Component{
 
@@ -31,6 +31,31 @@ class BuildTournament extends React.Component{
 
     }
 
+    recordNote(){
+      const { notes } = this.props.tournament;
+      const { notesRef } = this.refs; 
+
+      this.props.updateNotes(notesRef.value);
+
+    }
+
+    createTournament(){
+
+      const { prelims, outRounds, name, notes } = this.props.tournament;
+
+      const tournamentObject = {
+                                  name,
+                                  prelims,
+                                  outRounds,
+                                  notes
+                               }
+
+      console.log(tournamentObject);
+      
+      this.props.createNewTournament(tournamentObject);
+
+    }
+
 
     render(){
 
@@ -39,13 +64,21 @@ class BuildTournament extends React.Component{
         return(
           <div>
             
-            <h1>Build A Tournament Here</h1>
+            <div id="banner">
+              <h1>Build A Tournament Here</h1>
+            </div>
+            
 
-            <form action="" className="test">
+            <form action="" className="tournamentBuilder">
               <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
               <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
               <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.updateOutround()}/>
+              <input type="text" placeholder="Notes" ref="notesRef" onChange={() => this.recordNote()}/>
             </form>
+
+            <div id="submitButton" onClick={() => this.createTournament()}>
+              Create Tournament
+            </div>
 
           </div>
             
@@ -64,7 +97,9 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = {
   updateOutrounds,
   updateName,
-  updatePrelim
+  updatePrelim,
+  updateNotes,
+  createNewTournament
 };
 
 
