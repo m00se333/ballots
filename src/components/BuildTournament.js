@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament} from  "../actions/tournamentActions.js";
+import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament, retrieveTournaments } from  "../actions/tournamentActions.js";
 
 class BuildTournament extends React.Component{
 
@@ -39,20 +39,43 @@ class BuildTournament extends React.Component{
 
     }
 
+    componentWillMount(){
+      this.props.retrieveTournaments();
+    }
+
+    displayTournaments(){
+
+        const { tournamentList } = this.props;
+
+        //prints out stuff in the console, so that's great...
+        // tournamentList.map(function(x, i){
+        //   console.log(x)
+        // })
+        tournamentList.map((x,i) => {
+                    return <li key={i}>{x.name}</li>
+                  })
+       
+
+    }
+
     createTournament(){
 
       const { prelims, outRounds, name, notes } = this.props.tournament;
+      const { nameRef, prelimRef, outRoundRef, notesRef } = this.refs;
 
       const tournamentObject = {
                                   name,
                                   prelims,
                                   outRounds,
                                   notes
-                               }
+                               };
 
-      console.log(tournamentObject);
-      
       this.props.createNewTournament(tournamentObject);
+
+      nameRef.value = "";
+      prelimRef.value = 3;
+      outRoundRef.value = 0;
+      notesRef.value = "";
 
     }
 
@@ -60,24 +83,41 @@ class BuildTournament extends React.Component{
     render(){
 
         const {prelims, outRounds} = this.props.tournament;
+        const {tournamentList} = this.props;
+
+
+
 
         return(
-          <div>
-            
-            <div id="banner">
-              <h1>Build A Tournament Here</h1>
+          <div id="buildWrapper">
+            <div className="left-column">
+              <div id="banner">
+                  <h1>Build A Tournament Here</h1>
+              </div>
+                
+
+                <form action="" className="tournamentBuilder">
+                  <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
+                  <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
+                  <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.updateOutround()}/>
+                  <input type="text" placeholder="Notes" ref="notesRef" onChange={() => this.recordNote()}/>
+                </form>
+
+                <div id="submitButton" onClick={() => this.createTournament()}>
+                  Create Tournament
+                </div>
             </div>
-            
 
-            <form action="" className="tournamentBuilder">
-              <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
-              <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
-              <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.updateOutround()}/>
-              <input type="text" placeholder="Notes" ref="notesRef" onChange={() => this.recordNote()}/>
-            </form>
 
-            <div id="submitButton" onClick={() => this.createTournament()}>
-              Create Tournament
+            <div className="right-column">
+                <div className="pipeline">
+                    
+                  {tournamentList.map((x,i) => {
+                    return <li key={i}>{x.name}</li>
+                  })}
+                    
+                </div>
+                  
             </div>
 
           </div>
@@ -89,7 +129,8 @@ class BuildTournament extends React.Component{
 const mapStateToProps = (state) =>{
   return {
 
-    tournament: state.tournament
+    tournament: state.tournament,
+    tournamentList: state.tournamentList
 
   }
 }
@@ -99,7 +140,9 @@ const mapDispatchToProps = {
   updateName,
   updatePrelim,
   updateNotes,
-  createNewTournament
+  createNewTournament,
+  retrieveTournaments
+
 };
 
 

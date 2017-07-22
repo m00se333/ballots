@@ -1,0 +1,18 @@
+#buildWrapper{
+
+  height: inherit;
+  width: inherit;
+
+  display: flex;
+
+    .left-column{
+      flex:1;
+      border: 1px solid black;
+    }
+
+    .right-column{
+      flex:1;
+      border: 1px solid black;
+    }
+
+}

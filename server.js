@@ -6,6 +6,7 @@ var webpack = require("webpack");
 var config = require("./webpack.config");
 var app = express();
 var compiler = webpack(config);
+var MongoClient = require("mongodb").MongoClient;
 
 //custom middleware
 var mongoMethod = require("./routes/mongoroutes.js");
@@ -35,6 +36,11 @@ app.post("/createNewTournament", function(req, res){
 
   mongoMethod.newTournament(req.body);
 
+})
+
+
+app.post("/retrieveTournamentList", function(req, res){
+  mongoMethod.ping(res);
 })
 
 app.listen(PORT, function(err) {

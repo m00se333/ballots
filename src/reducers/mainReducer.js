@@ -7,7 +7,10 @@ import {routerReducer} from "react-router-redux";
 
 import {data} from "./dataReducer";
 import {tournament} from "./tournamentReducer";
+import {tournamentList} from "./tournamentListReducer";
 
-const rootReducer = combineReducers({data, tournament, routing: routerReducer});
-
+const rootReducer = combineReducers({data, 
+                                    tournament, 
+                                    tournamentList, 
+                                    routing: routerReducer});
 export default rootReducer;

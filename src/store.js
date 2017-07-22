@@ -17,7 +17,8 @@ const state = {
     prelims: 3,
     outRounds: 0,
     notes: null
-  }
+  },
+  tournamentList: []
 
 };
 

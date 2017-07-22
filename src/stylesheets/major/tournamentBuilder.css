@@ -1,0 +1,12 @@
+#buildWrapper {
+  height: inherit;
+  width: inherit;
+  display: flex; }
+  #buildWrapper .left-column {
+    flex: 1;
+    border: 1px solid black; }
+  #buildWrapper .right-column {
+    flex: 1;
+    border: 1px solid black; }
+
+/*# sourceMappingURL=tournamentBuilder.css.map */

@@ -41,3 +41,27 @@ export function createNewTournament(object){
       })
     }
 }
+
+export function retrieveTournaments(){
+    const route = axios.post("/retrieveTournamentList")
+
+    return(dispatch) => {
+
+        route.then(({data}) => {
+          console.log("new data")
+          console.log(data);
+          dispatch(loadTournaments(data));
+        })
+        
+    }
+}       
+      //companion function ⬆️    
+      const loadTournaments = (array) =>({
+    
+            type: "LOAD",
+            payload: array
+          
+      })
+
+
+
