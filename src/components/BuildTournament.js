@@ -1,7 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament, retrieveTournaments } from  "../actions/tournamentActions.js";
+import TournamentList from "./minor/TournamentList";
+
+import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament} from  "../actions/tournamentActions.js";
 
 class BuildTournament extends React.Component{
 
@@ -39,25 +41,6 @@ class BuildTournament extends React.Component{
 
     }
 
-    componentWillMount(){
-      this.props.retrieveTournaments();
-    }
-
-    displayTournaments(){
-
-        const { tournamentList } = this.props;
-
-        //prints out stuff in the console, so that's great...
-        // tournamentList.map(function(x, i){
-        //   console.log(x)
-        // })
-        tournamentList.map((x,i) => {
-                    return <li key={i}>{x.name}</li>
-                  })
-       
-
-    }
-
     createTournament(){
 
       const { prelims, outRounds, name, notes } = this.props.tournament;
@@ -83,11 +66,7 @@ class BuildTournament extends React.Component{
     render(){
 
         const {prelims, outRounds} = this.props.tournament;
-        const {tournamentList} = this.props;
-
-
-
-
+        
         return(
           <div id="buildWrapper">
             <div className="left-column">
@@ -112,9 +91,9 @@ class BuildTournament extends React.Component{
             <div className="right-column">
                 <div className="pipeline">
                     
-                  {tournamentList.map((x,i) => {
-                    return <li key={i}>{x.name}</li>
-                  })}
+                  
+                  <TournamentList />
+                    
                     
                 </div>
                   
@@ -129,8 +108,7 @@ class BuildTournament extends React.Component{
 const mapStateToProps = (state) =>{
   return {
 
-    tournament: state.tournament,
-    tournamentList: state.tournamentList
+    tournament: state.tournament
 
   }
 }
@@ -140,8 +118,7 @@ const mapDispatchToProps = {
   updateName,
   updatePrelim,
   updateNotes,
-  createNewTournament,
-  retrieveTournaments
+  createNewTournament
 
 };
 
