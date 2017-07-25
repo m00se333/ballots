@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import TournamentList from "./minor/TournamentList";
+import List from "./minor/List";
 
 import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament} from  "../actions/tournamentActions.js";
 
@@ -89,13 +89,8 @@ class BuildTournament extends React.Component{
 
 
             <div className="right-column">
-                <div className="pipeline">
-                    
-                  
-                  <TournamentList />
-                    
-                    
-                </div>
+                
+                  <List />
                   
             </div>
 

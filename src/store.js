@@ -18,7 +18,8 @@ const state = {
     outRounds: 0,
     notes: null
   },
-  tournamentList: []
+  tournamentList: [],
+  active: false
 
 };
 
