@@ -8,7 +8,8 @@ class Item extends React.Component{
   render(){
 
     const {name, outRounds, prelims, notes} = this.props;
-    const status = this.props.active === this.props.name ? {color: "red"} : {color: "black"}
+    const status = this.props.active === this.props.name ? {color: "red", flex: 2} : {color: "black", flex: 1}
+
 
     return(
 
@@ -19,7 +20,7 @@ class Item extends React.Component{
               style={status}>
               
                 
-                  <p>{name}</p>
+                <p>{name}</p>  
 
             </div>
       )

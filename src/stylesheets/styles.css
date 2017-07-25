@@ -85,5 +85,13 @@ body {
   #buildWrapper .right-column {
     flex: 1;
     border: 1px solid black; }
+    #buildWrapper .right-column .pipeline {
+      display: flex;
+      height: 100%;
+      flex-direction: column; }
+      #buildWrapper .right-column .pipeline .details {
+        border: 1px solid black; }
+        #buildWrapper .right-column .pipeline .details p {
+          font-size: 12px; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -16,7 +16,7 @@ class List extends React.Component{
                                                         prelims={x.prelims}
                                                         outRounds={x.outRounds}
                                                         notes={x.notes}
-                                                        key={x.name}/> }) //I hate programming, this works.
+                                                        key={x.name}/> })
 
     return(
       <div className="pipeline">
