@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 import List from "./minor/List";
 
-import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament} from  "../actions/tournamentActions.js";
+import {updateOutrounds, updateName, updatePrelim, updateNotes, createNewTournament, retrieveTournaments} from  "../actions/tournamentActions.js";
 
 class BuildTournament extends React.Component{
 
@@ -52,14 +52,18 @@ class BuildTournament extends React.Component{
                                   outRounds,
                                   notes
                                };
-
+                               
       this.props.createNewTournament(tournamentObject);
-
+      this.props.retrieveTournaments();
       nameRef.value = "";
       prelimRef.value = 3;
       outRoundRef.value = 0;
       notesRef.value = "";
 
+    }
+
+    componentWillMount(){
+      this.props.retrieveTournaments();
     }
 
 
@@ -90,7 +94,7 @@ class BuildTournament extends React.Component{
 
             <div className="right-column">
                 
-                  <List />
+                  <List tournamentList={this.props.tournamentList} />
                   
             </div>
 
@@ -103,7 +107,8 @@ class BuildTournament extends React.Component{
 const mapStateToProps = (state) =>{
   return {
 
-    tournament: state.tournament
+    tournament: state.tournament,
+    tournamentList: state.tournamentList
 
   }
 }
@@ -113,7 +118,8 @@ const mapDispatchToProps = {
   updateName,
   updatePrelim,
   updateNotes,
-  createNewTournament
+  createNewTournament,
+  retrieveTournaments
 
 };
 
