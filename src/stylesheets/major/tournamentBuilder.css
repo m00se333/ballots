@@ -7,33 +7,32 @@
     border: 1px solid black; }
   #buildWrapper .right-column {
     flex: 1;
-    border: 1px solid black; }
-    #buildWrapper .right-column .pipeline {
-      display: flex;
+    border: 1px solid black;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    overflow-y: scroll; }
+    #buildWrapper .right-column .details {
+      flex: 1 1 auto;
+      border: 1px solid black;
       height: 100%;
-      width: 100%;
-      flex-direction: column;
-      overflow-y: scroll; }
-      #buildWrapper .right-column .pipeline .details {
-        flex: 1 1 auto;
-        border: 1px solid black;
-        height: 100%;
+      display: flex; }
+      #buildWrapper .right-column .details .title {
+        flex: 3; }
+        #buildWrapper .right-column .details .title span {
+          font-size: 2em; }
+      #buildWrapper .right-column .details .editBox {
+        flex: 1;
+        color: white;
         display: flex; }
-        #buildWrapper .right-column .pipeline .details .title {
-          flex: 3; }
-          #buildWrapper .right-column .pipeline .details .title span {
-            font-size: 2em; }
-        #buildWrapper .right-column .pipeline .details .editBox {
-          flex: 1;
-          color: white;
-          display: flex; }
-          #buildWrapper .right-column .pipeline .details .editBox .option {
-            flex: 1 1 auto;
-            color: black;
-            height: 100%; }
-          #buildWrapper .right-column .pipeline .details .editBox #edit {
-            background-color: green; }
-          #buildWrapper .right-column .pipeline .details .editBox #delete {
-            background-color: red; }
+        #buildWrapper .right-column .details .editBox .option {
+          flex: 1 1 auto;
+          color: black;
+          height: 100%; }
+        #buildWrapper .right-column .details .editBox #edit {
+          background-color: green; }
+        #buildWrapper .right-column .details .editBox #delete {
+          background-color: red; }
 
 /*# sourceMappingURL=tournamentBuilder.css.map */

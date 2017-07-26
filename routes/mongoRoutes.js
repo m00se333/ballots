@@ -26,11 +26,18 @@ module.exports.ping = (res) => { //  think a method that checked for the server'
   
 }
 
-// check this out
-// app.get("/movies-list", function(req, res){
+module.exports.deleteTournament = (tournamentName, res) => {
 
-//         db.collection("movies").find({}).toArray(function(err, ){
-//           res.render("list", {"movies" : docs});
-//         })
+  MongoClient.connect("mongodb://localhost:27017/ballots", function(err, db){
 
-//     });
+    db.collection("tournaments").deleteOne({"tournament.name": {$eq: tournamentName }});
+
+      res.send("deleted " + tournamentName);
+
+  })
+}
+
+
+
+
+

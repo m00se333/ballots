@@ -38,9 +38,16 @@ app.post("/createNewTournament", function(req, res){
 
 })
 
-
 app.post("/retrieveTournamentList", function(req, res){
   mongoMethod.ping(res);
+})
+
+app.post("/retrieveTournament", function(req, res){
+  console.log(req.body)
+})
+
+app.post("/deleteTournament", function(req, res){
+  mongoMethod.deleteTournament(req.body.tournament, res)
 })
 
 app.listen(PORT, function(err) {

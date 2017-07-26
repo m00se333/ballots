@@ -3,8 +3,13 @@ import {connect} from "react-redux";
 
 import Item from "./Item"
 
+import {retrieveTournaments} from "../../actions/tournamentActions.js";
 
 class List extends React.Component{
+
+   componentWillMount(){
+      this.props.retrieveTournaments();
+    }
 
 
   render(){
@@ -19,7 +24,7 @@ class List extends React.Component{
                                                         key={x.name}/> })
 
     return(
-      <div className="pipeline">
+      <div className="right-column">
 
         {tournamentList.length === 0 ? <p>Loading</p> : list}
 
@@ -29,6 +34,19 @@ class List extends React.Component{
 
 }
 
+const mapStateToProps = (state) => {
+  return {
+
+    tournamentList: state.tournamentList
+
+  }
+}
+
+const MapDispatchToProps = {
+  retrieveTournaments
+}
 
 
-export default List;
+
+
+export default connect(mapStateToProps, MapDispatchToProps)(List);
