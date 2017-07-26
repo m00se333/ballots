@@ -11,6 +11,9 @@ import Dashboard from "./components/Dashboard";
   import Profile from "./components/Profile";
   import Ballots from "./components/Ballots";
   import BuildTournament from "./components/BuildTournament";
+    //"nested" in /tournament
+      // import TournamentDetails from "./components/TournamentDetails"
+      // <Route path="/tournament/:details" component={}></Route>
 
 //StoreShell
 import StoreShell from "./components/StoreShell";

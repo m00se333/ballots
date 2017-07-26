@@ -18,14 +18,43 @@
             
             display: flex;
             height: 100%;
+            width: 100%;
             flex-direction: column;
+            overflow-y: scroll;
 
            .details{
-              
+              flex: 1 1 auto;
               border: 1px solid black;
-              
-              p {
-                font-size: 12px;
+              height: 100%;
+              display: flex;
+
+              .title{
+                
+                flex: 3;
+                
+                  span {
+                    font-size: 2em;
+                 }
+              }
+
+              .editBox{
+                flex: 1;
+                
+                color: white;
+                display: flex;
+
+                  .option{
+                    flex: 1 1 auto;
+                    color: black;
+                    height: 100%;
+
+                  }
+                  #edit{
+                    background-color: green;
+                  }
+                  #delete{
+                    background-color: red
+                  }
               }
            } 
         }

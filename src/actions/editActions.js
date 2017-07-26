@@ -13,3 +13,11 @@ export function deactivate(){
     payload: null
   }
 }
+
+// Related to editReducer
+export function editMode(tournament){
+  return{
+    type: "EDIT_MODE",
+    payload: tournament
+  }
+}

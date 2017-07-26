@@ -52,7 +52,7 @@ class BuildTournament extends React.Component{
                                   outRounds,
                                   notes
                                };
-                               
+
       this.props.createNewTournament(tournamentObject);
       this.props.retrieveTournaments();
       nameRef.value = "";
@@ -108,7 +108,8 @@ const mapStateToProps = (state) =>{
   return {
 
     tournament: state.tournament,
-    tournamentList: state.tournamentList
+    tournamentList: state.tournamentList,
+    editTournament: state.editTournament
 
   }
 }
