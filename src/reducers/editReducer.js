@@ -4,7 +4,11 @@ export function editTournament(state={}, action){
 
 
       case "EDIT_MODE":
-        console.log("got it " + action.payload); 
+        
+        if (state === action.payload){
+          return null
+        }
+
         return action.payload;  
 
 

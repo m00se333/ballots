@@ -1,13 +1,18 @@
 import React from "react";
 import {connect} from "react-redux";
+import {CSSTransitionGroup} from "react-transition-group";
 
+//actions
 import {updateOutrounds, 
         updateName, 
         updatePrelim, 
         updateNotes, 
         createNewTournament,
         retrieveTournaments} from  "../../actions/tournamentActions.js";
-      
+
+//components
+import TournamentEditor from "./TournamentEditor";
+
 class NewTournament extends React.Component{
 
 
@@ -71,23 +76,47 @@ render(){
 
   const { prelims, outRounds} =  this.props.tournament;
 
+  const style = {
+
+      active: { display: "flex", flex: 5 },
+      inactive: null
+  }
+
+  const dynamic = this.props.editTournament != null ? style.active : style.inactive
+
+  
+
   return(
     <div className="left-column">
 
-        <div id="banner">
-          <h1>Build A Tournament Here</h1>
-        </div>  
+        <div className="tournament-creator">
+              
+              <div id="banner">
+                <h1>Build A Tournament Here</h1>
+              </div>  
 
-        <form action="" className="tournamentBuilder">
-          <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
-          <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
-          <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.updateOutround()}/>
-          <input type="text" placeholder="Notes" ref="notesRef" onChange={() => this.recordNote()}/>
-        </form>
+              <form action="" className="tournamentBuilder">
+                <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
+                <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
+                <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.updateOutround()}/>
+                <input type="text" placeholder="Notes" ref="notesRef" onChange={() => this.recordNote()}/>
+              </form>
 
-        <div id="submitButton" onClick={() => this.createTournament()}>
-          Create Tournament
+              <div id="submitButton" onClick={() => this.createTournament()}>
+                Create Tournament
+              </div>
+
+
         </div>
+        <CSSTransitionGroup   className="tournament-editor"
+                              component="div"
+                              transitionName="editBoxRail"
+                              transitionEnterTimeout={10000}
+                              transitionLeaveTimeout={10000}
+                              style={dynamic}>
+
+              <TournamentEditor key="editor" />
+        </CSSTransitionGroup>
 
     </div>
     )
@@ -96,7 +125,8 @@ render(){
 
 const mapStateToProps = (state) => {
   return {
-    tournament: state.tournament
+    tournament: state.tournament,
+    editTournament: state.editTournament
   }
 };
 

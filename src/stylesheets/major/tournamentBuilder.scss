@@ -8,6 +8,26 @@
     .left-column{
       flex:1;
       border: 1px solid black;
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+
+          .tournament-creator{
+            
+            flex: 1;
+          }
+
+          .tournament-editor{        
+
+            flex: 0;
+            display: none;
+
+                .editBox{
+
+                  border-top: 1px solid black;
+                  border-bottom: 1px solid black;
+                }
+          }
     }
 
     .right-column{

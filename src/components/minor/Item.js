@@ -1,16 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {activate, deactivate, editMode, deleteTournament} from "../../actions/editActions.js"
+import {activate, deactivate, deleteTournament, editMode} from "../../actions/editActions.js"
 import {retrieveTournaments} from "../../actions/tournamentActions.js";
 
 class Item extends React.Component{
 
   
-  handle(e){
-      console.log("wow");
-    }
-
   delete(tournament){
 
     this.props.deleteTournament(tournament)
@@ -18,17 +14,23 @@ class Item extends React.Component{
   }
 
 
-  editMode(name, outRounds, prelims, notes, status){
+  render(){
 
-    return(
-      <div ref={name}
-              id={name}
-              className="details"
-              style={status}>
+    const {name, outRounds, prelims, notes} = this.props;
+    const status = this.props.active === this.props.name ? {color: "red", flex: 10} : {color: "black", flex: 1}
 
-            <div className="title" onClick={()=> this.props.activate(name)}>
+
+    return (
+
+        <div ref={name}
+           className="details"
+           style={status}
+           key={name}>
+
+            <div className="title" 
+                 onClick={()=> this.props.activate(name)}>
                 
-                <span>{name}</span>
+                  <span>{name}</span>
 
             </div>
 
@@ -39,23 +41,14 @@ class Item extends React.Component{
               
 
       </div>
+
       )
-
-  }
-
-
-  render(){
-
-    const {name, outRounds, prelims, notes} = this.props;
-    const status = this.props.active === this.props.name ? {color: "red", flex: 10} : {color: "black", flex: 1}
-
-
-    return this.editMode(name, outRounds, prelims, notes, status)
   }
 }
 
 const mapStateToProps = (state) =>{
   return {
+    //activate is old and I'm not using it
     active: state.active,
     editTournament: state.editTournament
   }
