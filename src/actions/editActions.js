@@ -1,20 +1,10 @@
 import axios from "axios";
 
-export function activate(tournament){
-  return{
-    type: "ACTIVATE",
-    payload: tournament
-  }
-}
-
-export function deactivate(){
-  return{
-    type: "DEACTIVATE",
-    payload: null
-  }
-}
-
 export function deleteTournament(tournament){
+
+  //unintended function: deleted tournament info sticks around
+  //maybe I should remove the delete button when something is being updated
+
   const route = axios.post("/deleteTournament", {tournament})
 
   return(dispatch) => {
@@ -26,6 +16,42 @@ export function deleteTournament(tournament){
       })
   }
 }
+
+export function editMode(tournament){
+  return{
+    type: "EDIT_MODE",
+    payload: tournament
+  }
+}
+
+export function performNameUpdate(string){
+  return {
+    action: "UPDATE_NAME",
+    payload: string
+  }
+}
+
+export function performPrelimUpdate(number){
+  return {
+    action: "UPDATE_PRELIMS",
+    payload: number
+  }
+}
+
+export function performOutRoundUpdate(number){
+  return {
+    action: "UPDATE_OUTROUNDS",
+    payload: number
+  }
+}
+
+export function performNotesUpdate(string){
+  return {
+    action: "UPDATE_NOTES",
+    payload: number
+  }
+}
+
 
 // Related to editReducer
 // export function editMode(tournament){
@@ -41,10 +67,3 @@ export function deleteTournament(tournament){
 
 // }
 
-
-export function editMode(tournament){
-  return{
-    type: "EDIT_MODE",
-    payload: tournament
-  }
-}

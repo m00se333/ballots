@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {activate, deactivate, deleteTournament, editMode} from "../../actions/editActions.js"
+import {deleteTournament, editMode} from "../../actions/editActions.js"
 import {retrieveTournaments} from "../../actions/tournamentActions.js";
 
 class Item extends React.Component{
@@ -27,8 +27,7 @@ class Item extends React.Component{
            style={status}
            key={name}>
 
-            <div className="title" 
-                 onClick={()=> this.props.activate(name)}>
+            <div className="title">
                 
                   <span>{name}</span>
 
@@ -48,15 +47,11 @@ class Item extends React.Component{
 
 const mapStateToProps = (state) =>{
   return {
-    //activate is old and I'm not using it
-    active: state.active,
     editTournament: state.editTournament
   }
 }
 
 const mapDispatchToProps = {
-  activate,
-  deactivate,
   editMode,
   deleteTournament,
   retrieveTournaments

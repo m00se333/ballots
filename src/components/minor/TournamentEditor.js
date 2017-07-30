@@ -2,7 +2,10 @@ import React from "react";
 import {connect} from "react-redux";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup"
 
-
+import {performNameUpdate,
+        performPrelimUpdate,
+        performOutRoundUpdate,
+        performNotesUpdate} from "../../actions/editActions.js"
 
 class TournamentEditor extends React.Component{
 
@@ -23,11 +26,42 @@ class TournamentEditor extends React.Component{
 
 */
 
-requestRender(){
+updateName(){
+
+      const { name } = this.props.tournament;
+      const { nameRefUpdate  } = this.refs;
+
+      this.props.performNameUpdate(nameRef.value);
+
+    }
+
+updatePrelims(){
+      const { prelims } = this.props.tournament;
+      const { prelimRefUpdate } = this.refs;
+
+      this.props.performPrelimUpdate(prelimRef.value);
+
+    }
+
+updateOutround(){
+
+      const { outRounds } = this.props.tournament;
+      const { outRoundRefUpdate } = this.refs;
+
+      this.props.performOutRoundUpdate(outRoundRef.value);
+
+    }
 
 
+updateNote(){
+      const { notes } = this.props.tournament;
+      const { notesRefUpdate } = this.refs; 
 
-}
+      this.props.performNotesUpdate(notesRef.value);
+
+    }
+
+
 
 
 
@@ -40,18 +74,16 @@ requestRender(){
 
                                 if(x.name === editTournament){
           
-                                console.log("we hav a match what the fuck")
+                               
                                 return (
 
+                                    <form className="tournamentUpdater" key={"updater-"+ x.name}>
+                                        <input type="text" placeholder={x.name} ref="nameRefUpdate" />
+                                        <input type="number" placeholder={x.prelims} ref="prelimRefUpdate" />
+                                        <input type="number" placeholder={x.outRounds} ref="outroundRefUpdate" />
+                                        <input type="text" placeholder={x.notes} ref="notesRefUpdate" />
+                                    </form>
 
-                                <form className="tournamentUpdater" key="updater">
-                                    <input type="text" placeholder={x.name} ref="nameRefUpdate" />
-                                    <input type="number" placeholder={x.prelims} ref="prelimRefUpdate" />
-                                    <input type="number" placeholder={x.outRounds} ref="outroundsRefUpdate" />
-                                    <input type="text" placeholder={x.notes} ref="notesRefUpdate" />
-                                </form>
-
-                    
                                   )
 
 
@@ -93,7 +125,12 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  
+      
+      performNameUpdate,
+      performPrelimUpdate,
+      performOutRoundUpdate,
+      performNotesUpdate
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TournamentEditor)

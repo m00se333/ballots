@@ -16,7 +16,7 @@ import TournamentEditor from "./TournamentEditor";
 class NewTournament extends React.Component{
 
 
-updateOutround(){
+recordOutround(){
 
       const { outRounds } = this.props.tournament;
       const { outRoundRef } = this.refs;
@@ -25,30 +25,30 @@ updateOutround(){
 
     }
 
-    recordName(){
+recordName(){
 
-      const { name } = this.props.tournament;
-      const { nameRef  } = this.refs;
+  const { name } = this.props.tournament;
+  const { nameRef  } = this.refs;
 
-      this.props.updateName(nameRef.value);
+  this.props.updateName(nameRef.value);
 
-    }
+}
 
-    updatePrelims(){
-      const { prelims } = this.props.tournament;
-      const { prelimRef } = this.refs;
+recordPrelims(){
+  const { prelims } = this.props.tournament;
+  const { prelimRef } = this.refs;
 
-      this.props.updatePrelim(prelimRef.value);
+  this.props.updatePrelim(prelimRef.value);
 
-    }
+}
 
-    recordNote(){
-      const { notes } = this.props.tournament;
-      const { notesRef } = this.refs; 
+recordNote(){
+  const { notes } = this.props.tournament;
+  const { notesRef } = this.refs; 
 
-      this.props.updateNotes(notesRef.value);
+  this.props.updateNotes(notesRef.value);
 
-    }
+}
 
     createTournament(){
 
@@ -84,7 +84,7 @@ render(){
 
   const dynamic = this.props.editTournament != null ? style.active : style.inactive
 
-  
+
 
   return(
     <div className="left-column">
@@ -97,8 +97,8 @@ render(){
 
               <form action="" className="tournamentBuilder">
                 <input type="text" placeholder="Tournament Name" ref="nameRef" onChange={() => this.recordName()}/>
-                <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.updatePrelims()} />
-                <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.updateOutround()}/>
+                <input type="number" defaultValue={prelims} ref="prelimRef" onChange={() => this.recordPrelims()} />
+                <input type="number" defaultValue={outRounds} ref="outRoundRef" onChange={() => this.recordOutround()}/>
                 <input type="text" placeholder="Notes" ref="notesRef" onChange={() => this.recordNote()}/>
               </form>
 
