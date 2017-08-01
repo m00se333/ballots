@@ -17,16 +17,38 @@
             flex: 1;
           }
 
-          .tournament-editor{        
-
+          .editBox{
             flex: 5;
-
-                .editBox{
-
-                  border-top: 1px solid black;
-                  border-bottom: 1px solid black;
-                }
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            background-color: blue;
           }
+
+          //transitions for the .editBox
+
+          .edit-enter{
+            background-color: yellow;
+            flex: 0.05;
+          }
+
+          .edit-enter-active{
+            flex : 5;
+            
+            transition: flex 500ms ease-in;
+          }
+
+          .edit-exit{
+            flex: 5;
+            background-color: blue;
+          }
+
+          .edit-exit-active{
+            background-color: red;
+            
+            transition: flex 500ms ease-in;
+            flex: 0;
+          }
+        
     }
 
     .right-column{

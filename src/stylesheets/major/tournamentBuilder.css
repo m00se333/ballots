@@ -10,11 +10,24 @@
     flex-direction: column; }
     #buildWrapper .left-column .tournament-creator {
       flex: 1; }
-    #buildWrapper .left-column .tournament-editor {
-      flex: 5; }
-      #buildWrapper .left-column .tournament-editor .editBox {
-        border-top: 1px solid black;
-        border-bottom: 1px solid black; }
+    #buildWrapper .left-column .editBox {
+      flex: 5;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      background-color: blue; }
+    #buildWrapper .left-column .edit-enter {
+      background-color: yellow;
+      flex: 0.05; }
+    #buildWrapper .left-column .edit-enter-active {
+      flex: 5;
+      transition: flex 500ms ease-in; }
+    #buildWrapper .left-column .edit-exit {
+      flex: 5;
+      background-color: blue; }
+    #buildWrapper .left-column .edit-exit-active {
+      background-color: red;
+      transition: flex 500ms ease-in;
+      flex: 0; }
   #buildWrapper .right-column {
     flex: 1;
     border: 1px solid black;

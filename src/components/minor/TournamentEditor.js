@@ -41,10 +41,6 @@ verifyEdits(){
 }
 
 
-
-
-
-
     render(){
 
         const {editTournament, tournamentList}  = this.props;

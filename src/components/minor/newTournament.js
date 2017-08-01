@@ -19,9 +19,10 @@ const Test = ({children, ...props}) => (
 
               <CSSTransition
                 {...props}
-                timeout={1000}
+                timeout={{enter: 500, exit: 500}}
+                mountOnEnter={true}
                 unmountOnExit={true}
-                classNames="test"
+                classNames="edit"
 
               >
                       
