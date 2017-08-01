@@ -19,7 +19,8 @@ const state = {
     notes: null
   },
   tournamentList: [],
-  editTournament: null
+  editTournament: null,
+  editMode: false
 
 };
 

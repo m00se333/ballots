@@ -56,7 +56,7 @@ export function retrieveTournaments(){
     }
 }       
       //companion function ⬆️    
-      const loadTournaments = (array) =>({
+     export const loadTournaments = (array) =>({
     
             type: "LOAD",
             payload: array

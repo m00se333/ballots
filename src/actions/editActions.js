@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// import { loadTournaments } from "./tournamentActions.js"
+
 export function deleteTournament(tournament){
 
   //unintended function: deleted tournament info sticks around
@@ -17,53 +19,36 @@ export function deleteTournament(tournament){
   }
 }
 
+export function updateTournament(tournamentName, object){
+
+    const route = axios.post("/updateTournament", {tournamentName, object});
+
+    return(dispatch) => {
+
+        route.then(({data}) => {
+          console.log("preforming update");
+
+        })
+
+
+    }
+}
+
 export function editMode(tournament){
   return{
-    type: "EDIT_MODE",
+    type: "EDIT_TOURNAMENT",
     payload: tournament
   }
 }
 
-export function performNameUpdate(string){
-  return {
-    action: "UPDATE_NAME",
-    payload: string
-  }
-}
-
-export function performPrelimUpdate(number){
-  return {
-    action: "UPDATE_PRELIMS",
-    payload: number
-  }
-}
-
-export function performOutRoundUpdate(number){
-  return {
-    action: "UPDATE_OUTROUNDS",
-    payload: number
-  }
-}
-
-export function performNotesUpdate(string){
-  return {
-    action: "UPDATE_NOTES",
-    payload: number
+export function edit(){
+  return{
+    type: "EDIT_MODE",
+    payload: true
   }
 }
 
 
-// Related to editReducer
-// export function editMode(tournament){
-//   const route = axios.post("/retrieveTournament", {tournament})
 
-//   return(dispatch) => {
 
-//     route.then(({data}) => {
-//       console.log(data);
-//     })
-    
-//   }
-
-// }
 

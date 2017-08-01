@@ -37,6 +37,34 @@ module.exports.deleteTournament = (tournamentName, res) => {
   })
 }
 
+module.exports.updateTournament = (tournamentName, updates, res) => {
+
+  MongoClient.connect("mongodb://localhost:27017/ballots", function(err, db){
+
+    db.collection("tournaments").update({"tournament.name": tournamentName}, { $set: {
+                                                                                      "tournament.prelims": updates.prelims,
+                                                                                      "tournament.outRounds": updates.outRounds,
+                                                                                      "tournament.notes": updates.notes,
+                                                                                      }
+                                                                              })
+
+    res.send("updated " + tournamentName)
+
+
+  })
+
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

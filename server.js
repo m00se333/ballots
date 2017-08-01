@@ -32,7 +32,6 @@ app.get('*', function(req, res) {
 });
 
 app.post("/createNewTournament", function(req, res){
-  console.log(req.body);
 
   mongoMethod.newTournament(req.body);
 
@@ -42,8 +41,11 @@ app.post("/retrieveTournamentList", function(req, res){
   mongoMethod.ping(res);
 })
 
-app.post("/retrieveTournament", function(req, res){
-  console.log(req.body)
+app.post("/updateTournament", function(req, res){
+  const {tournamentName, object} = req.body 
+
+  mongoMethod.updateTournament(tournamentName, object, res)
+
 })
 
 app.post("/deleteTournament", function(req, res){

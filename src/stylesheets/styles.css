@@ -88,8 +88,7 @@ body {
     #buildWrapper .left-column .tournament-creator {
       flex: 1; }
     #buildWrapper .left-column .tournament-editor {
-      flex: 0;
-      display: none; }
+      flex: 5; }
       #buildWrapper .left-column .tournament-editor .editBox {
         border-top: 1px solid black;
         border-bottom: 1px solid black; }

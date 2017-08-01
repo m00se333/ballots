@@ -1,65 +1,44 @@
 import React from "react";
 import {connect} from "react-redux";
-import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup"
+
 
 import {performNameUpdate,
         performPrelimUpdate,
         performOutRoundUpdate,
-        performNotesUpdate} from "../../actions/editActions.js"
+        performNotesUpdate,
+        updateTournament} from "../../actions/editActions.js"
+
+import {retrieveTournaments} from "../../actions/tournamentActions.js"
 
 class TournamentEditor extends React.Component{
 
-/*
-<CSSTransitionGroup className="editBox"
-                              component="div"
-                              transitionName="editBoxRail"
-                              transitionEnterTimeout={2500}
-                              transitionLeaveTimeout={1000}
-                                                  >
 
-              <h1>This is the tournament editor</h1>
-              <span>Currently editing... {this.props.editTournament}</span>
-</CSSTransitionGroup>
-*/
+verifyEdits(){
 
-/*
+  const { nameRefUpdate, prelimRefUpdate, outRoundRefUpdate, notesRefUpdate } = this.refs;
 
-*/
+  const updates = {
+                      prelims: prelimRefUpdate.value,
+                      outRounds: outRoundRefUpdate.value,
+                      notes: notesRefUpdate.value
+                    
+                  }
 
-updateName(){
+  const verify = confirm("make these changes?")
 
-      const { name } = this.props.tournament;
-      const { nameRefUpdate  } = this.refs;
-
-      this.props.performNameUpdate(nameRef.value);
-
-    }
-
-updatePrelims(){
-      const { prelims } = this.props.tournament;
-      const { prelimRefUpdate } = this.refs;
-
-      this.props.performPrelimUpdate(prelimRef.value);
-
-    }
-
-updateOutround(){
-
-      const { outRounds } = this.props.tournament;
-      const { outRoundRefUpdate } = this.refs;
-
-      this.props.performOutRoundUpdate(outRoundRef.value);
-
-    }
+  if (verify === true){
 
 
-updateNote(){
-      const { notes } = this.props.tournament;
-      const { notesRefUpdate } = this.refs; 
+      this.props.updateTournament(nameRefUpdate.value, updates)
+      this.props.retrieveTournaments()
 
-      this.props.performNotesUpdate(notesRef.value);
+  } else {
 
-    }
+      console.log("whatever")
+  }
+
+
+}
 
 
 
@@ -78,10 +57,10 @@ updateNote(){
                                 return (
 
                                     <form className="tournamentUpdater" key={"updater-"+ x.name}>
-                                        <input type="text" placeholder={x.name} ref="nameRefUpdate" />
-                                        <input type="number" placeholder={x.prelims} ref="prelimRefUpdate" />
-                                        <input type="number" placeholder={x.outRounds} ref="outroundRefUpdate" />
-                                        <input type="text" placeholder={x.notes} ref="notesRefUpdate" />
+                                        <input type="text" defaultValue={x.name} ref="nameRefUpdate" />
+                                        <input type="number" defaultValue={x.prelims} ref="prelimRefUpdate" />
+                                        <input type="number" defaultValue={x.outRounds} ref="outRoundRefUpdate" />
+                                        <input type="text" defaultValue={x.notes} ref="notesRefUpdate" />
                                     </form>
 
                                   )
@@ -105,7 +84,7 @@ updateNote(){
               </div>
               
 
-              <div id="updateButton">
+              <div id="updateButton" onClick={() => this.verifyEdits()}>
                 Update tournament
               </div>
 
@@ -129,7 +108,9 @@ const mapDispatchToProps = {
       performNameUpdate,
       performPrelimUpdate,
       performOutRoundUpdate,
-      performNotesUpdate
+      performNotesUpdate,
+      updateTournament,
+      retrieveTournaments
 
 }
 

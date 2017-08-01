@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {deleteTournament, editMode} from "../../actions/editActions.js"
+import {deleteTournament, editMode, edit} from "../../actions/editActions.js"
 import {retrieveTournaments} from "../../actions/tournamentActions.js";
 
 class Item extends React.Component{
@@ -11,6 +11,11 @@ class Item extends React.Component{
 
     this.props.deleteTournament(tournament)
     this.props.retrieveTournaments();
+  }
+
+  beginEdits(tournament){
+    this.props.editMode(tournament)
+    this.props.edit()
   }
 
 
@@ -34,7 +39,7 @@ class Item extends React.Component{
             </div>
 
             <div className="editBox">
-                  <div className="option" id="edit" onClick={() => this.props.editMode(name)}>Edit</div>
+                  <div className="option" id="edit" onClick={() => this.beginEdits(name)}>Edit</div>
                   <div className="option" id="delete" onClick={() => this.delete(name)}>Delete</div>
             </div>
               
@@ -54,7 +59,8 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = {
   editMode,
   deleteTournament,
-  retrieveTournaments
+  retrieveTournaments,
+  edit
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);

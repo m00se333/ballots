@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {CSSTransitionGroup} from "react-transition-group";
+import CSSTransition from 'react-transition-group/CSSTransition'
 
 //actions
 import {updateOutrounds, 
@@ -10,20 +10,38 @@ import {updateOutrounds,
         createNewTournament,
         retrieveTournaments} from  "../../actions/tournamentActions.js";
 
+import {edit} from "../../actions/editActions.js";
+
 //components
 import TournamentEditor from "./TournamentEditor";
+
+const Test = ({children, ...props}) => (
+
+              <CSSTransition
+                {...props}
+                timeout={1000}
+                unmountOnExit={true}
+                classNames="test"
+
+              >
+                      
+                      {children}
+
+              </CSSTransition>
+
+  )
 
 class NewTournament extends React.Component{
 
 
 recordOutround(){
 
-      const { outRounds } = this.props.tournament;
-      const { outRoundRef } = this.refs;
+  const { outRounds } = this.props.tournament;
+  const { outRoundRef } = this.refs;
 
-      this.props.updateOutrounds(outRoundRef.value);
+  this.props.updateOutrounds(outRoundRef.value);
 
-    }
+}
 
 recordName(){
 
@@ -75,15 +93,9 @@ recordNote(){
 render(){
 
   const { prelims, outRounds} =  this.props.tournament;
+  const { editMode, editTournament} = this.props;
 
-  const style = {
-
-      active: { display: "flex", flex: 5 },
-      inactive: null
-  }
-
-  const dynamic = this.props.editTournament != null ? style.active : style.inactive
-
+  const display = this.props.editTournament === null ? false : true
 
 
   return(
@@ -108,15 +120,10 @@ render(){
 
 
         </div>
-        <CSSTransitionGroup   className="tournament-editor"
-                              component="div"
-                              transitionName="editBoxRail"
-                              transitionEnterTimeout={10000}
-                              transitionLeaveTimeout={10000}
-                              style={dynamic}>
-
-              <TournamentEditor key="editor" />
-        </CSSTransitionGroup>
+        
+        <Test in={display}>
+          <TournamentEditor />
+        </Test>
 
     </div>
     )
@@ -126,7 +133,8 @@ render(){
 const mapStateToProps = (state) => {
   return {
     tournament: state.tournament,
-    editTournament: state.editTournament
+    editTournament: state.editTournament,
+    editMode: state.editMode
   }
 };
 
@@ -136,7 +144,8 @@ const mapDispatchToProps = {
   updatePrelim,
   updateNotes,
   createNewTournament,
-  retrieveTournaments
+  retrieveTournaments,
+  edit
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTournament);
