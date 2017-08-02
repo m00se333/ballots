@@ -71,11 +71,13 @@ verifyEdits(){
     
 
             <div className="editBox">
-
-              <h1>This is the tournament editor</h1>
-              <span>Currently editing... {this.props.editTournament}</span>
+              <div className="banner">
+                <h1>Edit Tournament</h1>
+              </div>
+             
 
               <div className="target">
+               <span>Currently editing... {this.props.editTournament}</span>
                 {tournamentInfo}
               </div>
               

@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 
 import List from "./minor/List";
-import NewTournament from "./minor/NewTournament";
+import TournamentInterfaces from "./minor/TournamentInterfaces";
 
 
 class BuildTournament extends React.Component{
@@ -15,7 +15,7 @@ class BuildTournament extends React.Component{
         return(
           <div id="buildWrapper">
            
-            <NewTournament />
+            <TournamentInterfaces />
                 
             <List />                              
 

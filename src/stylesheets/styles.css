@@ -75,6 +75,10 @@ body {
   #ballotsWrapper #schoolSelector {
     width: 30%; }
 
+input {
+  margin: 0;
+  padding: 0; }
+
 #buildWrapper {
   height: inherit;
   width: inherit;
@@ -86,25 +90,71 @@ body {
     height: 100%;
     flex-direction: column; }
     #buildWrapper .left-column .tournament-creator {
-      flex: 1; }
+      flex: 1 1 50px;
+      overflow: hidden;
+      margin: 0 0 0 0; }
+      #buildWrapper .left-column .tournament-creator .banner {
+        background: red;
+        text-align: center;
+        width: 100%; }
+        #buildWrapper .left-column .tournament-creator .banner h1 {
+          color: white;
+          font-size: 2em;
+          width: 100%;
+          margin: 4% auto; }
+      #buildWrapper .left-column .tournament-creator .form-box {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        flex-direction: column; }
+        #buildWrapper .left-column .tournament-creator .form-box .tournamentCreatorForm {
+          width: 58%;
+          height: 60%;
+          margin: 5% auto;
+          display: flex;
+          flex-flow: row wrap; }
+          #buildWrapper .left-column .tournament-creator .form-box .tournamentCreatorForm #nameRecord {
+            flex: 1 100%; }
+          #buildWrapper .left-column .tournament-creator .form-box .tournamentCreatorForm #prelimRecord {
+            flex: 1 40%; }
+          #buildWrapper .left-column .tournament-creator .form-box .tournamentCreatorForm #outRoundRecord {
+            flex: 1 40%; }
+          #buildWrapper .left-column .tournament-creator .form-box .tournamentCreatorForm #notesRecord {
+            flex: 1 100%; }
+          #buildWrapper .left-column .tournament-creator .form-box .tournamentCreatorForm .formInput {
+            font-size: 2em; }
+        #buildWrapper .left-column .tournament-creator .form-box #newTournamentButton {
+          color: black;
+          border: 1px solid white;
+          box-shadow: 0px 1% 3% -3% #888888;
+          margin: 3% auto;
+          width: 40%;
+          text-align: center;
+          font-size: 2em; }
     #buildWrapper .left-column .editBox {
-      flex: 5;
+      flex: 5 1 500px;
       border-top: 1px solid black;
-      border-bottom: 1px solid black;
-      background-color: blue; }
+      border-bottom: 1px solid black; }
+      #buildWrapper .left-column .editBox .banner {
+        background: red;
+        text-align: center; }
+        #buildWrapper .left-column .editBox .banner h1 {
+          color: white; }
     #buildWrapper .left-column .edit-enter {
-      background-color: yellow;
-      flex: 0.05; }
+      flex: 0 0 0px;
+      opacity: 0.01; }
     #buildWrapper .left-column .edit-enter-active {
-      flex: 5;
-      transition: flex 500ms ease-in; }
+      flex: 5 1 500px;
+      opacity: 1;
+      transition: opacity 500ms ease-in, flex 500ms ease-in-out; }
     #buildWrapper .left-column .edit-exit {
-      flex: 5;
-      background-color: blue; }
+      opacity: 1;
+      flex: 5 1 500px; }
     #buildWrapper .left-column .edit-exit-active {
-      background-color: red;
-      transition: flex 500ms ease-in;
-      flex: 0; }
+      opacity: 0.01;
+      transition: opacity 500ms ease-in, flex 500ms ease-in-out;
+      flex: 0 0 0px; }
   #buildWrapper .right-column {
     flex: 1;
     border: 1px solid black;
@@ -122,17 +172,26 @@ body {
         flex: 3; }
         #buildWrapper .right-column .details .title span {
           font-size: 2em; }
-      #buildWrapper .right-column .details .editBox {
+      #buildWrapper .right-column .details .edit-or-delete {
         flex: 1;
-        color: white;
         display: flex; }
-        #buildWrapper .right-column .details .editBox .option {
+        #buildWrapper .right-column .details .edit-or-delete .option {
           flex: 1 1 auto;
           color: black;
-          height: 100%; }
-        #buildWrapper .right-column .details .editBox #edit {
+          width: 100%; }
+        #buildWrapper .right-column .details .edit-or-delete .option-enter {
+          width: 0%; }
+        #buildWrapper .right-column .details .edit-or-delete .option-enter-active {
+          width: 100%;
+          transition: width 500ms ease-in-out; }
+        #buildWrapper .right-column .details .edit-or-delete .option-exit {
+          width: 100%; }
+        #buildWrapper .right-column .details .edit-or-delete .option-exit-active {
+          width: 0%;
+          transition: width 250ms ease-in-out; }
+        #buildWrapper .right-column .details .edit-or-delete #edit {
           background-color: green; }
-        #buildWrapper .right-column .details .editBox #delete {
+        #buildWrapper .right-column .details .edit-or-delete #delete {
           background-color: red; }
 
 /*# sourceMappingURL=styles.css.map */
