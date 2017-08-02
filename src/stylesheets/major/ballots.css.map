@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,eAAe;EACX,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,IAAI;EAChB,WAAW,EAAE,MAAM;EACnB,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,OAAO;EAGb,+BAAe;IACb,KAAK,EAAE,GAAG",
-"sources": ["ballots.scss"],
-"names": [],
-"file": "ballots.css"
-}

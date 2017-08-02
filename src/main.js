@@ -9,11 +9,9 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
   //nested in Dasboard
   import Profile from "./components/Profile";
-  import Ballots from "./components/Ballots";
+  import BallotReporting from "./components/BallotReporting";
   import BuildTournament from "./components/BuildTournament";
-    //"nested" in /tournament
-      // import TournamentDetails from "./components/TournamentDetails"
-      // <Route path="/tournament/:details" component={}></Route>
+
 
 //StoreShell
 import StoreShell from "./components/StoreShell";
@@ -34,7 +32,7 @@ const router = (
           <IndexRoute component={Home}></IndexRoute>
           <Route path="/dashboard" component={Dashboard}></Route>
           <Route path="/profile" component={Profile}></Route>
-          <Route path="/ballots" component={Ballots}></Route>
+          <Route path="/ballots" component={BallotReporting}></Route>
           <Route path="/tournament" component={BuildTournament}></Route>
         </Route>
       </Router>

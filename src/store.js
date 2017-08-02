@@ -20,7 +20,8 @@ const state = {
   },
   tournamentList: [],
   editTournament: null,
-  editMode: false
+  editMode: false,
+  currentTournament: null
 
 };
 

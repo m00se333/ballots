@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import List from "./minor/List";
-import TournamentInterfaces from "./minor/TournamentInterfaces";
+import List from "./tournament-create-and-edit-components/List";
+import TournamentInterfaces from "./tournament-create-and-edit-components/TournamentInterfaces";
 
 
 class BuildTournament extends React.Component{
