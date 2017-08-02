@@ -52,6 +52,11 @@ app.post("/deleteTournament", function(req, res){
   mongoMethod.deleteTournament(req.body.tournament, res)
 })
 
+app.post("/createNewRankingObject", function(req, res){
+  console.log(req.body.query)
+  mongoMethod.getTournamentData(req.body.query, res)
+})
+
 app.listen(PORT, function(err) {
   if (err) {
     console.log(err);

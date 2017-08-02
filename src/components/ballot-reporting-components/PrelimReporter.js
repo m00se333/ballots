@@ -8,30 +8,25 @@ import {connect} from "react-redux";
 class PrelimReporter extends React.Component{
 
 
-  renderPrelimInputs(prelims){
+butts(){
 
-      let i = 0;
-
-      while(i < prelims){
-
-        console.log("hello " + i);
-        i++
-
-      }
+  console.log("_)_)")
 
   }
 
+
+
   render(){
 
-      const {prelims} = this.props.tournamentList
+     
 
-      
+
 
       return (
 
-        <div>
+        <div onClick={()=>this.butts()}>
             
-            {this.renderPrelimInputs(prelims)}
+            <span>{"Prelims: " + this.props.prelims}</span>
 
         </div>
 
@@ -41,13 +36,11 @@ class PrelimReporter extends React.Component{
 }
 
 
+
 const mapStateToProps = (state) => {
-  return {
-    tournamentList: state.tournamentList
-  }
+    return{ prelims: state.currentTournament.prelims}
 }
 
 const mapDispatchToProps = {}
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrelimReporter);

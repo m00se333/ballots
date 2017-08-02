@@ -21,7 +21,13 @@ const state = {
   tournamentList: [],
   editTournament: null,
   editMode: false,
-  currentTournament: null
+  currentTournament: {
+                name: null,
+                prelims: null,
+                outRounds: null,
+                notes: null
+                      }
+  
 
 };
 

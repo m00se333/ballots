@@ -58,6 +58,19 @@ module.exports.updateTournament = (tournamentName, updates, res) => {
 }
 
 
+module.exports.getTournamentData = (tournamentName, res) => {
+
+    MongoClient.connect("mongodb://localhost:27017/ballots", function(err, db){
+
+        var query = {"tournament.name":  {$eq: tournamentName}}
+
+        db.collection("tournaments").find(query, {"_id": 0}).toArray(function(err, docs){
+
+          res.send(docs[0]);
+        })
+    })
+}
+
 
 
 

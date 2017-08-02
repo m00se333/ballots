@@ -8,14 +8,14 @@ import {setCurrentTournament} from "../actions/ballotReportingActions";
 //comonents
 import TournamentSelector from "./ballot-reporting-components/TournamentSelector";
 import PrelimReporter from "./ballot-reporting-components/PrelimReporter";
+import OutRoundReporter from "./ballot-reporting-components/OutRoundReporter";
+import NotesReporter from "./ballot-reporting-components/NotesReporter";
 
-class BallotReporting extends React.Component{
-
-  
+class BallotReporting extends React.Component{  
 
   render(){
 
-
+      
 
       return(
 
@@ -27,7 +27,9 @@ class BallotReporting extends React.Component{
 
                 <div className="reporting">
 
-                  <PrelimReporter />
+                  <PrelimReporter   />
+                  <OutRoundReporter  />
+                  <NotesReporter  />
 
                 </div>
 
